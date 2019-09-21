@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Note;
 
 /**
  *
@@ -49,17 +50,20 @@ public class NoteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        Note note;
+        String path = getServletContext().getRealPath("/WEB-INF/note.txt");
+        File f = new File(path);
+        FileReader fr = new FileReader(f);
+        BufferedReader br = new BufferedReader(fr);
         
-            String path = getServletContext().getRealPath("/WEB-INF/note.txt");
-    
-    BufferedReader br = new BufferedReader(new FileReader(new File(path)));
-    
-    PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path, false)));
-    
-    request.setAttribute("noteArea", pw);
-    
-        
-    getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp")
+        String t = br.readLine();
+        String nc = br.readLine();
+        note = new Note(t, nc);
+        System.out.println(note.getTitle());
+        request.setAttribute("Note", note);
+
+        //PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path, false)));
+        getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp")
                 .forward(request, response);
     }
 

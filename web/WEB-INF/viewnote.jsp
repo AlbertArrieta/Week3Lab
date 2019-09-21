@@ -14,10 +14,10 @@
     <body>
         <h1>Simple Note Keeper</h1>
         <h2>View Note</h2>
-        <h4>Title:</h4>This is the title
+        Title: ${Note.title}
         <br>
         <br>
         <h3>Contents:</h3><br>
-        ${noteArea} 
+        ${Note.noteContent} 
     </body>
 </html>
