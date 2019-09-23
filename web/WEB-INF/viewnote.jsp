@@ -19,5 +19,7 @@
         <br>
         <h3>Contents:</h3><br>
         ${Note.noteContent} 
+        <br>
+        <a href="note?edit">Edit</a> 
     </body>
 </html>

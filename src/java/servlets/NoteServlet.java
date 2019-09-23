@@ -62,9 +62,12 @@ public class NoteServlet extends HttpServlet {
         System.out.println(note.getTitle());
         request.setAttribute("Note", note);
 
+        String editnote = request.getParameter("edit");
         //PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path, false)));
-        getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp")
-                .forward(request, response);
+        if(editnote == null)
+        getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
+        if(editnote.equals(""))
+        getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp").forward(request, response);
     }
 
     /**
@@ -78,7 +81,8 @@ public class NoteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
+                    .forward(request, response);
     }
 
     /**
@@ -88,6 +92,7 @@ public class NoteServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
+        
         return "Short description";
     }// </editor-fold>
 
