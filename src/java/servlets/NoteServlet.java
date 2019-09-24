@@ -63,11 +63,14 @@ public class NoteServlet extends HttpServlet {
         String editnote = request.getParameter("edit");
         br.close();
 
-        if (editnote.equals("")) {
-            getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp").forward(request, response);
-        } else {
+        if (editnote == null) {
             getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
         }
+        
+        if (editnote.equals("")) {
+            getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp").forward(request, response);
+        } 
+        
     }
 
     /**
