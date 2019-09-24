@@ -17,8 +17,9 @@
         Title: ${Note.title}
         <br>
         <br>
-        <h3>Contents:</h3><br>
+        <h3>Contents:</h3>
         ${Note.noteContent} 
+        <br>
         <br>
         <a href="note?edit">Edit</a> 
     </body>
